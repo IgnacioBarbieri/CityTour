@@ -1,0 +1,72 @@
+﻿@model ShowSummaryViewModel
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+@{
+    ViewBag.Title = "Mostrar Itinerario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="submit-form">
+            <div class="row">
+                <div class="col-md-12 form-content left-content">
+                    <div class="section-heading">
+                        <span>Consulta de Itinerario</span>
+                        <h2>Seleccione un punto de inter&eacute;s para poder mostrar el itinerario</h2>
+                    </div>
+                </div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="col-md-6 first-item">
+                        <fieldset>
+                            @Html.ValidationMessageFor(model => model.ItineraryPointId, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(model => model.ItineraryPointId, Model.ItineraryPoints, "Seleccione opción...")
+                        </fieldset>
+                    </div>
+                    <div class="col-md-3">
+                        <fieldset>
+                            <button type="submit" class="btn">Mostrar</button>
+                        </fieldset>
+                    </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                }
+
+                @if (Model.SummaryInfoResults.Count > 0)
+                {
+                    <div class="col-md-12 form-content left-content">
+                        <h3>Itinerario</h3>
+                    </div>
+                    <div class="col-md-12 form-content left-content">
+                        <table class="table table-striped">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th class="text-center">Parada</th>
+                                    <th>Nombre</th>
+                                    <th class="text-center">Distancia Total</th>
+                                    <th>Pasajeros</th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in Model.SummaryInfoResults)
+                            {
+                                <tr>
+                                    <td class="text-center"><span class="fa fa-map-marker">&nbsp;@(Model.SummaryInfoResults.IndexOf(item) + 1)</span></td>
+                                    <td>@item.Name</td>
+                                    <td class="text-center">@item.Distance</td>
+                                    <td><p>@item.GuestInfoToString()</p></td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,20 @@
+﻿@section styles{
+    @Styles.Render("~/Content/mainbanner")
+}
+
+@{
+    ViewBag.Title = "City Tour";
+}
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="banner-caption">
+            <div class="line-dec"></div>
+            <h2>City Tour Ja&eacute;n</h2>
+            <span>¿Buscando nuevas experiencias?</span>
+            <div class="blue-button">
+                >@Html.ActionLink("Descubre más", "CreateItineraryRequest", "Guest", null, new { @class = "scrollTo" });
+            </div>
+        </div>
+    </div>
+</div>

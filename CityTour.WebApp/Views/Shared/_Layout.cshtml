@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @RenderSection("styles", false)
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="wrap">
+        <header id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button id="primary-nav-button" type="button">Menu</button>
+                        <a href="index.html">
+                            <div class="logo">
+                                <img src="@Url.Content("~/Content/images/logo.png")">
+                            </div>
+                        </a>
+                        <nav id="primary-nav" class="dropdown cf">
+                            <ul class="dropdown menu">
+                                <li class='active'>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                                <li class='active'>@Html.ActionLink("Registro", "Create", "Guest")</li>
+                                <li class='active'>@Html.ActionLink("Solicitar Itinerario", "CreateItineraryRequest", "Guest")</li>
+                                <li class='active'>@Html.ActionLink("Consultar Itinerario", "ShowSummary", "Itinerary")</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <section class="banner" id="top">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="about-veno">
+                        <div class="logo">
+                            <img src="@Url.Content("~/Content/images/footer_logo.png")">
+                        </div>
+                        <p>Mauris sit amet quam congue, pulvinar urna et, congue diam. Suspendisse eu lorem massa. Integer sit amet posuere tellus, id efficitur leo. In hac habitasse platea dictumst.</p>
+                        <ul class="social-icons">
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-rss"></i></a>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="useful-links">
+                        <div class="footer-heading">
+                            <h4>Links De Ayuda</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-stop"></i>FAQs</a></li>
+                                    <li><a href="#"><i class="fa fa-stop"></i>Registro</a></li>
+                                    <li><a href="#"><i class="fa fa-stop"></i>Login</a></li>
+                                    <li><a href="#"><i class="fa fa-stop"></i>Mi perfil</a></li>
+                                    <li><a href="#"><i class="fa fa-stop"></i>Como funciona</a></li>
+                                    <li><a href="#"><i class="fa fa-stop"></i>Acerca de nosotros</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-stop"></i>Nuestro clientes</a></li>
+                                    <li><a href="#"><i class="fa fa-stop"></i>Partners</a></li>
+                                    <li><a href="#"><i class="fa fa-stop"></i>Blog</a></li>
+                                    <li><a href="#"><i class="fa fa-stop"></i>Contactar</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <div class="footer-heading">
+                            <h4>Informacion de contacto</h4>
+                        </div>
+                        <p>Praesent iaculis gravida elementum. Proin fermentum neque facilisis semper pharetra. Sed vestibulum vehicula tincidunt.</p>
+                        <ul>
+                            <li><span>Telefono:</span><a href="#">010-050-0550</a></li>
+                            <li><span>Email:</span><a href="#">hi@company.co</a></li>
+                            <li><span>Direccion:</span><a href="#">company.co</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="sub-footer">
+        <p>Copyright &copy; 2020 Bates Hotel</p>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

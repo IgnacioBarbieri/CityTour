@@ -1,0 +1,55 @@
+﻿@model GuestViewModel
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+@{
+    ViewBag.Title = "Registrar Huesped";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="form-content">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="left-content">
+                <div class="row">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="col-md-12">
+                            <div class="section-heading">
+                                <span>Registro de Hu&eacute;sped</span>
+                                <h2>Por favor, introduce los d&aacute;tos b&aacute;sicos para registrar un hu&eacute;sped en el hotel</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <fieldset>
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Nombre..." })
+                            </fieldset>
+                        </div>
+                        <div class="col-md-12">
+                            <fieldset>
+                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @placeholder = "Primer Apellido..." })
+                            </fieldset>
+                        </div>
+                        <div class="col-md-12">
+                            <fieldset>
+                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @placeholder = "Segundo Apellido..." })
+                            </fieldset>
+                        </div>
+                        <div class="col-md-12">
+                            <fieldset>
+                                <button type="submit" id="form-submit" class="modal-btn">Registrar</button>
+                            </fieldset>
+                        </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

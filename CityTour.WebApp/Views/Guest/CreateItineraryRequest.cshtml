@@ -1,0 +1,52 @@
+﻿@model GuestItineraryRequestViewModel
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+@{
+    ViewBag.Title = "Crear Solicitud Itinerario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="form-content">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="left-content">
+                <div class="row">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="col-md-12">
+                            <div class="section-heading">
+                                <span>Solicitud de Itinerario</span>
+                                <h2>Por favor, introduce los d&aacute;tos b&aacute;sicos para registrar la solicitud del itinerario</h2>
+                            </div>
+                        </div>                       
+                        <div class="col-md-12">
+                            <fieldset>
+                                <span>Hu&eacute;spedes registrados</span><br/>
+                                @Html.ValidationMessageFor(model => model.GuestId, "", new { @class = "text-danger" })
+                                @Html.ListBoxFor(model => model.GuestId, Model.Guests, new { @class = "form-control"})
+                            </fieldset>
+                        </div>
+                        <div class="col-md-12">
+                            <fieldset>
+                                <span>Puntos de inter&eacute;s</span><br />
+                                @Html.ValidationMessageFor(model => model.ItineraryPointId, "", new { @class = "text-danger" })
+                                @Html.ListBoxFor(model => model.ItineraryPointId, Model.ItineraryPoints, new { @class = "form-control" })
+                            </fieldset>
+                        </div>
+                        <div class="col-md-12">
+                            <fieldset>
+                                <button type="submit" id="form-submit" class="modal-btn">Crear</button>
+                            </fieldset>
+                        </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
